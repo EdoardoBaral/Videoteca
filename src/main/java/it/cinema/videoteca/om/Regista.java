@@ -57,13 +57,8 @@ public class Regista implements Comparable<Regista>
 				return -1;
 			else if(this.dataNascita != null && regista.getDataNascita() == null)
 				return 1;
-			
-			if(this.dataNascita.getMillis() < regista.getDataNascita().getMillis())
-				return -1;
-			else if(this.dataNascita.getMillis() > regista.getDataNascita().getMillis())
-				return 1;
 			else
-				return 0;
+				return Long.compare(this.dataNascita.getMillis(), regista.getDataNascita().getMillis());
 		}
 	}
 	
@@ -74,7 +69,7 @@ public class Regista implements Comparable<Regista>
 		else if(this == regista)
 			return true;
 		else
-			return this.compareTo(regista) == 0 ? true : false;
+			return this.compareTo(regista) == 0;
 	}
 	
 	@Override

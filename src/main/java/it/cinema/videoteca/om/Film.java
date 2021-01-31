@@ -44,13 +44,13 @@ public class Film implements Comparable<Film>
 	public boolean esisteInRegia(Regista regista)
 	{
 		int indice = Collections.binarySearch(this.regia, regista);
-		return indice >= 0 ? true : false;
+		return indice >= 0;
 	}
 	
 	public boolean esisteInCast(Attore attore)
 	{
 		int indice = Collections.binarySearch(this.cast, attore);
-		return indice >= 0 ? true : false;
+		return indice >= 0;
 	}
 	
 	public boolean aggiungiRegista(Regista regista)
@@ -109,19 +109,12 @@ public class Film implements Comparable<Film>
 		else if(this.titolo.compareToIgnoreCase(film.getTitolo()) > 0)
 			return 1;
 		else
-		{
-			if(this.anno < film.getAnno())
-				return -1;
-			else if(this.anno > film.getAnno())
-				return 1;
-			else
-				return 0;
-		}
+			return Integer.compare(this.anno, film.getAnno());
 	}
 	
 	public boolean equals(Film film)
 	{
-		return this.compareTo(film) == 0 ? true : false;
+		return this.compareTo(film) == 0;
 	}
 	
 	@Override

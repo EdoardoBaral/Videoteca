@@ -74,7 +74,7 @@ public class Attore implements Comparable<Attore>
 		else if(this == attore)
 			return true;
 		else
-			return this.compareTo(attore) == 0 ? true : false;
+			return this.compareTo(attore) == 0;
 	}
 	
 	@Override
