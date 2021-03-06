@@ -7,6 +7,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -75,6 +76,49 @@ public class Regista implements Comparable<Regista>
 			return true;
 		else
 			return this.compareTo(regista) == 0;
+	}
+	
+	public boolean esisteInFilmografia(Film film)
+	{
+		int indice = Collections.binarySearch(filmografia, film);
+		return indice >= 0;
+	}
+	
+	public boolean aggiungiFilm(Film film)
+	{
+		if(esisteInFilmografia(film))
+			return false;
+		else
+		{
+			filmografia.add(film);
+			Collections.sort(filmografia);
+			return true;
+		}
+	}
+	
+	public boolean rimuoviFilm(Film film)
+	{
+		int indice = Collections.binarySearch(filmografia, film);
+		if(indice < 0)
+			return false;
+		else
+		{
+			filmografia.remove(film);
+			return true;
+		}
+	}
+	
+	public boolean rimuoviFilm(String titolo)
+	{
+		Film film = new Film(titolo);
+		int indice = Collections.binarySearch(filmografia, film);
+		if(indice < 0)
+			return false;
+		else
+		{
+			filmografia.remove(film);
+			return true;
+		}
 	}
 	
 	@Override

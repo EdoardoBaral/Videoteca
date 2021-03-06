@@ -109,6 +109,128 @@ public class AttoreTest
 	}
 	
 	@Test
+	public void esisteInFilmografiaFalseTest()
+	{
+		Attore attore = new Attore();
+		attore.setIdNome("La Potta, Amedeo");
+		attore.setNome("Amedeo");
+		attore.setCognome("La Potta");
+		attore.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore.setDataMorte(LocalDate.of(2021, 1, 31));
+		
+		boolean result = attore.esisteInFilmografia(new Film("Il test"));
+		assertFalse(result);
+	}
+	
+	@Test
+	public void esisteInFilmografiaTrueTest()
+	{
+		Attore attore = new Attore();
+		attore.setIdNome("La Potta, Amedeo");
+		attore.setNome("Amedeo");
+		attore.setCognome("La Potta");
+		attore.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore.setDataMorte(LocalDate.of(2021, 1, 31));
+		
+		Film film = new Film("Il test");
+		attore.aggiungiFilm(film);
+		
+		boolean result = attore.esisteInFilmografia(film);
+		assertTrue(result);
+	}
+	
+	@Test
+	public void aggiungiFilmTest()
+	{
+		Attore attore = new Attore();
+		attore.setIdNome("La Potta, Amedeo");
+		attore.setNome("Amedeo");
+		attore.setCognome("La Potta");
+		attore.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore.setDataMorte(LocalDate.of(2021, 1, 31));
+		
+		boolean result = attore.aggiungiFilm(new Film("Il test"));
+		assertTrue(result);
+	}
+	
+	@Test
+	public void aggiungiFilmFalseTest()
+	{
+		Attore attore = new Attore();
+		attore.setIdNome("La Potta, Amedeo");
+		attore.setNome("Amedeo");
+		attore.setCognome("La Potta");
+		attore.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore.setDataMorte(LocalDate.of(2021, 1, 31));
+		
+		attore.aggiungiFilm(new Film("Il test"));
+		
+		boolean result = attore.aggiungiFilm(new Film("Il test"));
+		assertFalse(result);
+	}
+	
+	@Test
+	public void rimuoviFilmFalseTest()
+	{
+		Attore attore = new Attore();
+		attore.setIdNome("La Potta, Amedeo");
+		attore.setNome("Amedeo");
+		attore.setCognome("La Potta");
+		attore.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore.setDataMorte(LocalDate.of(2021, 1, 31));
+		
+		boolean result = attore.rimuoviFilm(new Film("Il test"));
+		assertFalse(result);
+	}
+	
+	@Test
+	public void rimuoviFilmTest()
+	{
+		Attore attore = new Attore();
+		attore.setIdNome("La Potta, Amedeo");
+		attore.setNome("Amedeo");
+		attore.setCognome("La Potta");
+		attore.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore.setDataMorte(LocalDate.of(2021, 1, 31));
+		
+		Film film = new Film("Il test");
+		attore.aggiungiFilm(film);
+		
+		boolean result = attore.rimuoviFilm(film);
+		assertTrue(result);
+	}
+	
+	@Test
+	public void rimuoviFilmFalseTest_2()
+	{
+		Attore attore = new Attore();
+		attore.setIdNome("La Potta, Amedeo");
+		attore.setNome("Amedeo");
+		attore.setCognome("La Potta");
+		attore.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore.setDataMorte(LocalDate.of(2021, 1, 31));
+		
+		boolean result = attore.rimuoviFilm("Il test");
+		assertFalse(result);
+	}
+	
+	@Test
+	public void rimuoviFilmTest_2()
+	{
+		Attore attore = new Attore();
+		attore.setIdNome("La Potta, Amedeo");
+		attore.setNome("Amedeo");
+		attore.setCognome("La Potta");
+		attore.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore.setDataMorte(LocalDate.of(2021, 1, 31));
+		
+		attore.aggiungiFilm(new Film("Il test"));
+		
+		boolean result = attore.rimuoviFilm("Il test");
+		assertTrue(result);
+	}
+	
+	@Test
 	public void toStringTest()
 	{
 		Attore attore = new Attore();
