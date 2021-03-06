@@ -17,11 +17,11 @@ public class Film implements Comparable<Film>
 	@Id
 	private String titolo;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "REGIA", joinColumns = @JoinColumn(name = "TITOLO"), inverseJoinColumns = @JoinColumn(name = "ID_NOME"))
 	private List<Regista> regia;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "CAST", joinColumns = @JoinColumn(name = "TITOLO"), inverseJoinColumns = @JoinColumn(name = "ID_NOME"))
 	private List<Attore> cast;
 	

@@ -3,9 +3,9 @@ package it.cinema.videoteca.om;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
-import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +22,12 @@ public class Attore implements Comparable<Attore>
 	private String cognome;
 	
 	@Column(name = "DATA_NASCITA")
-	private DateTime dataNascita;
+	private LocalDate dataNascita;
 	
 	@Column(name = "DATA_MORTE")
-	private DateTime dataMorte;
+	private LocalDate dataMorte;
 	
-	@ManyToMany(mappedBy = "cast")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "cast")
 	private List<Film> filmografia;
 	
 	public Attore()
@@ -58,9 +58,9 @@ public class Attore implements Comparable<Attore>
 			else if(this.dataNascita != null && attore.getDataNascita() == null)
 				return 1;
 			
-			if(this.dataNascita.getMillis() < attore.getDataNascita().getMillis())
+			if(this.dataNascita.isBefore(attore.getDataNascita()))
 				return -1;
-			else if(this.dataNascita.getMillis() > attore.getDataNascita().getMillis())
+			else if(this.dataNascita.isAfter(attore.getDataNascita()))
 				return 1;
 			else
 				return 0;

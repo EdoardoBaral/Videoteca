@@ -1,8 +1,8 @@
 package it.cinema.videoteca.om;
 
-import org.joda.time.DateTime;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,15 +35,15 @@ public class AttoreTest
 		attore.setIdNome("La Potta, Amedeo");
 		attore.setNome("Amedeo");
 		attore.setCognome("La Potta");
-		attore.setDataNascita(new DateTime(1991, 10, 13, 0, 0));
-		attore.setDataMorte(new DateTime(2021, 1, 31, 0, 0));
+		attore.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore.setDataMorte(LocalDate.of(2021, 1, 31));
 		attore.setFilmografia(new ArrayList<>());
 		
 		assertEquals("La Potta, Amedeo", attore.getIdNome());
 		assertEquals("Amedeo", attore.getNome());
 		assertEquals("La Potta", attore.getCognome());
-		assertEquals(new DateTime(1991, 10, 13, 0, 0), attore.getDataNascita());
-		assertEquals(new DateTime(2021, 1, 31, 0, 0), attore.getDataMorte());
+		assertEquals(LocalDate.of(1991, 10, 13), attore.getDataNascita());
+		assertEquals(LocalDate.of(2021, 1, 31), attore.getDataMorte());
 		assertTrue(attore.getFilmografia().isEmpty());
 	}
 	
@@ -54,16 +54,16 @@ public class AttoreTest
 		attore1.setIdNome("La Potta, Amedeo");
 		attore1.setNome("Amedeo");
 		attore1.setCognome("La Potta");
-		attore1.setDataNascita(new DateTime(1991, 10, 13, 0, 0));
-		attore1.setDataMorte(new DateTime(2021, 1, 31, 0, 0));
+		attore1.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore1.setDataMorte(LocalDate.of(2021, 1, 31));
 		attore1.setFilmografia(new ArrayList<>());
 		
 		Attore attore2 = new Attore();
 		attore2.setIdNome("La Potta, Amedeo");
 		attore2.setNome("Amedeo");
 		attore2.setCognome("La Potta");
-		attore2.setDataNascita(new DateTime(1991, 10, 13, 0, 0));
-		attore2.setDataMorte(new DateTime(2021, 1, 31, 0, 0));
+		attore2.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore2.setDataMorte(LocalDate.of(2021, 1, 31));
 		attore2.setFilmografia(new ArrayList<>());
 		
 		assertEquals(0, attore1.compareTo(attore2));
@@ -72,8 +72,8 @@ public class AttoreTest
 		attore3.setIdNome("Mosca, Maurizio");
 		attore3.setNome("Maurizio");
 		attore3.setCognome("Mosca");
-		attore3.setDataNascita(new DateTime(1950, 10, 13, 0, 0));
-		attore3.setDataMorte(new DateTime(2006, 1, 31, 0, 0));
+		attore3.setDataNascita(LocalDate.of(1950, 10, 13));
+		attore3.setDataMorte(LocalDate.of(2006, 1, 31));
 		attore3.setFilmografia(new ArrayList<>());
 		
 		assertEquals(-1, attore1.compareTo(attore3));
@@ -87,8 +87,8 @@ public class AttoreTest
 		attore1.setIdNome("La Potta, Amedeo");
 		attore1.setNome("Amedeo");
 		attore1.setCognome("La Potta");
-		attore1.setDataNascita(new DateTime(1991, 10, 13, 0, 0));
-		attore1.setDataMorte(new DateTime(2021, 1, 31, 0, 0));
+		attore1.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore1.setDataMorte(LocalDate.of(2021, 1, 31));
 		attore1.setFilmografia(new ArrayList<>());
 		
 		assertFalse(attore1.equals(null));
@@ -101,8 +101,8 @@ public class AttoreTest
 		attore3.setIdNome("La Potta, Amedeo");
 		attore3.setNome("Amedeo");
 		attore3.setCognome("La Potta");
-		attore3.setDataNascita(new DateTime(1991, 10, 13, 0, 0));
-		attore3.setDataMorte(new DateTime(2021, 1, 31, 0, 0));
+		attore3.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore3.setDataMorte(LocalDate.of(2021, 1, 31));
 		attore3.setFilmografia(new ArrayList<>());
 		
 		assertTrue(attore1.equals(attore3));
@@ -115,8 +115,8 @@ public class AttoreTest
 		attore.setIdNome("La Potta, Amedeo");
 		attore.setNome("Amedeo");
 		attore.setCognome("La Potta");
-		attore.setDataNascita(new DateTime(1991, 10, 13, 0, 0));
-		attore.setDataMorte(new DateTime(2021, 1, 31, 0, 0));
+		attore.setDataNascita(LocalDate.of(1991, 10, 13));
+		attore.setDataMorte(LocalDate.of(2021, 1, 31));
 		attore.setFilmografia(new ArrayList<>());
 		
 		assertNotNull(attore.toString());

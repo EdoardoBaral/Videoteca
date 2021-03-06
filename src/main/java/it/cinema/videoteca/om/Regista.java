@@ -3,9 +3,9 @@ package it.cinema.videoteca.om;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
-import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +22,12 @@ public class Regista implements Comparable<Regista>
 	private String cognome;
 	
 	@Column(name = "DATA_NASCITA")
-	private DateTime dataNascita;
+	private LocalDate dataNascita;
 	
 	@Column(name = "DATA_MORTE")
-	private DateTime dataMorte;
+	private LocalDate dataMorte;
 	
-	@ManyToMany(mappedBy = "regia")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "regia")
 	private List<Film> filmografia;
 	
 	public Regista()
@@ -57,8 +57,13 @@ public class Regista implements Comparable<Regista>
 				return -1;
 			else if(this.dataNascita != null && regista.getDataNascita() == null)
 				return 1;
+			
+			if(this.dataNascita.isBefore(regista.getDataNascita()))
+				return -1;
+			else if(this.dataNascita.isAfter(regista.getDataNascita()))
+				return 1;
 			else
-				return Long.compare(this.dataNascita.getMillis(), regista.getDataNascita().getMillis());
+				return 0;
 		}
 	}
 	
