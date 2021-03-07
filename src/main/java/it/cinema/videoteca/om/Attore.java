@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,8 +14,10 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "ATTORI")
-public class Attore implements Comparable<Attore>
+public class Attore implements Comparable<Attore>, Serializable
 {
+	private static final long serialVersionUID = -6397429304474580444L;
+	
 	@Id
 	@Column(name = "ID_NOME")
 	private String idNome;
