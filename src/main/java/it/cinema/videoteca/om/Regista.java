@@ -1,5 +1,6 @@
 package it.cinema.videoteca.om;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
@@ -14,6 +15,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "REGISTI")
+@JsonIgnoreProperties(value = { "filmografia" })
 public class Regista implements Comparable<Regista>, Serializable
 {
 	private static final long serialVersionUID = -2599062502219349295L;
